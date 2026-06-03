@@ -7,7 +7,7 @@ class character:
 
     def get_level(self):
         return self.level
-    
+
     def display_status(self):
         print(f"Name: {self.name}, Health: {self.health}, Level: {self.level}, Alive: {self.alive}")
 
@@ -35,8 +35,7 @@ class character:
                self.health+=ammount
         else:
             raise ValueError("Heal impossible")
-    
-    def heal_player(self, player, ammount: int):
+
+    def heal_player(self, player, ammount):
         if player == self:
-            self.take_heal(ammount)
-        
+            self.take_heal(int(ammount))
