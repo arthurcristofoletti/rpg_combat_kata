@@ -20,5 +20,3 @@ class character:
                self.health+=ammount
         else:
             raise ValueError("Heal impossible")
-
-        
