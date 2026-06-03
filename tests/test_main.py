@@ -1,4 +1,3 @@
-from src.app import character as personnage
 from src.main import start_player, damage_player, heal_player
 
 

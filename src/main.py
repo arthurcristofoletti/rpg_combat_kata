@@ -17,5 +17,4 @@ if __name__ == "__main__":
     damage_player(p1, ammount)
     ammount=input("Ammount of heal: ")
     heal_player(p1, ammount)
-
-    
+    print(f"Success: {p1.health}")
