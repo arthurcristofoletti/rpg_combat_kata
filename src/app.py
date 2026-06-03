@@ -1,13 +1,23 @@
-class Processor:
-    """Responsible for handling core data transformation logic."""
+class character:
+    def __init__(self, name):
+        self.name = name
+        self.health = 1000 
+        self.level = 1
+        self.alive = True
+    
+    def take_damage(self, ammount: int):
+        if self.health-ammount <= 0:
+            self.alive=False
+            self.health=0
+        else:
+            self.health-=ammount
 
-    def __init__(self, data_type: str) -> None:
-        if not isinstance(data_type, str):
-            raise TypeError("Data type must be a string")
-        self.data_type: str = data_type.strip()
-
-    def process_element(self, value: int) -> int:
-        """Executes a simple mathematical transformation on a numeric value."""
-        if not isinstance(value, (int, float)):
-            raise TypeError("Value must be a number")
-        return int(value * 2)
+    def take_heal(self, ammount: int):
+        if self.alive and ammount >= 0: 
+           if self.health+ammount > 1000:
+               self.health=1000
+           else:
+               self.health+=ammount
+        else:
+            raise ValueError("Heal impossible")
+        

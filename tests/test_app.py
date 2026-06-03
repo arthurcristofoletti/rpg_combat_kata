@@ -1,14 +1,23 @@
-import pytest
-from src.app import Processor
+from src.app  import character
 
-
-def test_processor_multiplication():
-    """Validates the business logic transformation inside app.py."""
-    processor = Processor(data_type="Test")
-    assert processor.process_element(10) == 20
-
-
-def test_processor_invalid_type():
-    """Ensures the application raises a TypeError when receiving invalid data types."""
-    with pytest.raises(TypeError):
-        Processor(data_type=123)  # Should fail since it expects a string
+def test_character_creation():
+    char = character("Test")
+    assert char.name == "Test"
+    assert char.health == 1000
+    assert char.level == 1
+    assert char.alive
+def test_character_take_damage():
+    char = character("Test")
+    char.take_damage(200)
+    assert char.health == 800
+    char.take_damage(800)
+    assert char.health == 0
+    assert not char.alive
+def test_character_heal():
+    char = character("Test")
+    char.take_damage(500)
+    char.take_heal(200)
+    assert char.health == 700
+    char.take_heal(500)
+    assert char.health == 1000
+    assert char.alive

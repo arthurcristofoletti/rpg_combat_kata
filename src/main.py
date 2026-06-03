@@ -1,13 +1,21 @@
-from src.app import Processor
+from src.app import character as personnage
 
+def start_player() -> personnage:
+    player_name=input("Name of the character: ")
+    return personnage(player_name)
 
-def run_pipeline() -> str:
-    """Orchestrates the pipeline execution flow."""
-    processor = Processor(data_type="Ads Analytics")
-    result = processor.process_element(500)
-    print(f"[{processor.data_type}] Pipeline processing result: {result}")
-    return f"Success: {result}"
+def damage_player(player):
+    ammount=input("Ammount of damage: ")
+    player.take_damage(int(ammount))
 
+def heal_player(player):
+    ammount=input("Ammount of heal: ")
+    player.take_heal(int(ammount))
 
 if __name__ == "__main__":
-    run_pipeline()
+    print("Starting game....")
+    p1=start_player()
+    damage_player(p1)
+    heal_player(p1)
+
+    
